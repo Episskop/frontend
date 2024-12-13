@@ -1,20 +1,22 @@
 import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './components/App/App.tsx'
-import './index.css'
+import App from '@/components/App/App'
+import '@/index.css'
 import { ErrorBoundary } from 'react-error-boundary'
-import { ErrorFallback } from './components/Error/ErrorFallback.tsx'
-import { LanguageProvider } from './components/Language.tsx'
-import { PropertyProvider } from './API/Context.tsx'
+import { ErrorFallback } from '@/components/Error/ErrorFallback'
+import { LanguageProvider } from '@/components/Language'
+import { PropertyProvider } from '@/API/Context'
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+
+const HomePage = () => {
+  return (
     <LanguageProvider>
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <PropertyProvider>
-        <App />
+          <App />
         </PropertyProvider>
       </ErrorBoundary>
     </LanguageProvider>
-  </React.StrictMode>
-)
+  )
+}
+
+export default HomePage

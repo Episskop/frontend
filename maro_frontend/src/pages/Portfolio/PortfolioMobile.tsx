@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import commercialData from '../Portfolio/Commercial/Commercial.tsx';
-import { useLanguage } from '../../components/Language.tsx'; 
+import commercialData from '@/components/Portfolio/Commercial/Commercial';
+import { useLanguage } from '@/components/Language'; 
 import './PortfolioMobile.css';
-import { usePropertyData } from '../../API/Context.tsx';
+import { usePropertyData } from '@/API/Context';
 
 interface RealEstateItem {
   residentialComplex: string;

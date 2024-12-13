@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from 'react'
-import { useLocation, Link, NavLink } from 'react-router-dom'
-import { useLanguage } from '../Language.tsx'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
+import { useLanguage } from '../Language'
 import './Header.css'
-import usePreventBodyScroll from '../../hooks/usePreventBodyScroll.ts'
+import usePreventBodyScroll from '@/hooks/usePreventBodyScroll'
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [isSticky, setSticky] = useState(false)
   const [buttonClicked, setButtonClicked] = useState(false)
   const { language } = useLanguage()
-  const location = useLocation()
-  
+  const router = useRouter()
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen)
     setButtonClicked(!buttonClicked)
   }
+
   const { disableScroll, enableScroll } = usePreventBodyScroll()
+
   useEffect(() => {
     if (menuOpen) {
       disableScroll()
@@ -25,7 +27,7 @@ function Header() {
     }
   }, [menuOpen])
 
-  const isHomePage = location.pathname === '/'
+  const isHomePage = router.pathname === '/'
 
   return (
     <div>
@@ -33,47 +35,41 @@ function Header() {
         <div className='menu'>
           <ul>
             <li>
-              <Link reloadDocument to='/#about' onClick={toggleMenu}>
-                {language === 'ru' ? 'О нас' : 'About us'}
+              <Link href='/#about' passHref>
+                <a onClick={toggleMenu}>
+                  {language === 'ru' ? 'О нас' : 'About us'}
+                </a>
               </Link>
             </li>
             <li>
-              <Link reloadDocument to='/portfolio' onClick={toggleMenu}>
-                {language === 'ru' ? 'Портфолио' : 'Portfolio'}
+              <Link href='/portfolio' passHref>
+                <a onClick={toggleMenu}>
+                  {language === 'ru' ? 'Портфолио' : 'Portfolio'}
+                </a>
               </Link>
             </li>
             <li>
-              <Link reloadDocument to='/#services' onClick={toggleMenu}>
-                {language === 'ru' ? 'Услуги' : 'Services'}
+              <Link href='/#services' passHref>
+                <a onClick={toggleMenu}>
+                  {language === 'ru' ? 'Услуги' : 'Services'}
+                </a>
               </Link>
             </li>
             <li>
-              <Link reloadDocument to='/#selection' onClick={toggleMenu}>
-                {language === 'ru' ? 'Подбор мебели' : 'Furniture selection'}
+              <Link href='/#selection' passHref>
+                <a onClick={toggleMenu}>
+                  {language === 'ru' ? 'Подбор мебели' : 'Furniture selection'}
+                </a>
               </Link>
             </li>
             <li>
-              <Link reloadDocument to='/#contacts' onClick={toggleMenu}>
-                {language === 'ru' ? 'Контакты' : 'Contacts'}
+              <Link href='/#contacts' passHref>
+                <a onClick={toggleMenu}>
+                  {language === 'ru' ? 'Контакты' : 'Contacts'}
+                </a>
               </Link>
             </li>
           </ul>
-          {/* <div className='additional-content'>
-            <Link to='/social-responsibility' onClick={toggleMenu}>
-              {language === 'ru'
-                ? 'Социальная ответственность'
-                : 'Social Responsibility'}
-            </Link>
-            <Link to='/guarantees' onClick={toggleMenu}>
-              {language === 'ru' ? 'Гарантии' : 'Guarantees'}
-            </Link>
-            <Link to='/FAQ' onClick={toggleMenu}>
-              FAQ
-            </Link>
-            <Link to='/cooperation' onClick={toggleMenu}>
-              {language === 'ru' ? 'Сотрудничество' : 'Cooperation'}
-            </Link>
-          </div> */}
         </div>
       )}
 
@@ -88,19 +84,21 @@ function Header() {
           </div>
         </a>
         <div className='menu-controls'>
-          <Link to='/' style={{ textDecoration: 'none' }}>
-            <span
-              className={isHomePage ? 'phone-number' : 'sticky-phone-number'}
-            >
-              <img
-                src={isHomePage ? '/img/phone.svg' : '/img/black-phone.svg'}
-                alt='phone'
-                className='phone-icon'
-              />
-              <p style={{ margin: 0, fontSize: '1.1vw', fontWeight: 200 }}>
-                382 69 772-002
-              </p>
-            </span>
+          <Link href='/' passHref>
+            <a style={{ textDecoration: 'none' }}>
+              <span
+                className={isHomePage ? 'phone-number' : 'sticky-phone-number'}
+              >
+                <img
+                  src={isHomePage ? '/img/phone.svg' : '/img/black-phone.svg'}
+                  alt='phone'
+                  className='phone-icon'
+                />
+                <p style={{ margin: 0, fontSize: '1.1vw', fontWeight: 200 }}>
+                  382 69 772-002
+                </p>
+              </span>
+            </a>
           </Link>
           <button
             className={isHomePage ? 'menu-button' : 'sticky-menu-button'}

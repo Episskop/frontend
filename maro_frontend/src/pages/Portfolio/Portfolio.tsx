@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import { usePropertyData } from "../../API/Context.tsx";
+import { usePropertyData } from "@/API/Context";
 import "./Portfolio.css";
-import { useLanguage } from "../../components/Language.tsx";
+import { useLanguage } from "@/components/Language";
 
 interface RealEstateItem {
     type:string,

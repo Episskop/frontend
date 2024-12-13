@@ -1,15 +1,15 @@
 import React, {useEffect, useRef, useState} from "react";
 import { NavLink, useParams} from "react-router-dom";
-import {useLanguage} from "../../components/Language.tsx";
-import commercialData from "../Portfolio/Commercial/Commercial.tsx";
+import {useLanguage} from "@/components/Language";
+import commercialData from "@/components/Portfolio/Commercial/Commercial";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./RealEstateDetailsMobile.css";
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
-import { usePropertyData } from "../../API/Context.tsx";
-import createPropertyData from "../../API/Api.ts";
+import { usePropertyData } from "@/API/Context";
+import createPropertyData from "@/API/Api";
 
 const RealEstateDetailsMobile = () => {
     const [isPopupVisible, setPopupVisible] = useState(false);

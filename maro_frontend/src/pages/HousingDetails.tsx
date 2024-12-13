@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLanguage } from '../components/Language.tsx';
+import { useLanguage } from '../components/Language';
 
 const HousingDetails = ({ type, data }) => {
   const { language } = useLanguage();

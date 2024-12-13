@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useLanguage } from '../../components/Language.tsx'
+import { useLanguage } from '@/components/Language'
 
 import './FAQMobile.css'
 

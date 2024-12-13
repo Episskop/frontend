@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { useLanguage } from '../../components/Language.tsx'
-import { sendMessage } from '../../telegram.ts';
+import { useLanguage } from '@/components/Language'
+import { sendMessage } from '@/telegram';
 
 interface Answers {
   [key: string]: string | string[] | undefined

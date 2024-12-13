@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLanguage } from '../../components/Language.tsx';
+import { useLanguage } from '@/components/Language';
 import './SocialResponsibilityMobile.css';
 
 const SocialResponsibilityMobile: React.FC = () => {

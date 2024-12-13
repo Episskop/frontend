@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import { useLanguage } from '../Language.tsx';
+import { useRouter } from 'next/router';
+import { useLanguage } from '../Language';
 import './HeaderMobile.css';
 
 function HeaderMobile() {
@@ -8,7 +8,7 @@ function HeaderMobile() {
   const [isSticky, setSticky] = useState(false);
   const [buttonClicked, setButtonClicked] = useState(false);
   const { language, toggleLanguage } = useLanguage();
-  const location = useLocation();
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,7 +30,7 @@ function HeaderMobile() {
     setButtonClicked(!buttonClicked);
   };
 
-  const isHomePage = location.pathname === '/';
+  const isHomePage = router.pathname === '/';
 
   return (
     <div>
@@ -47,7 +47,7 @@ function HeaderMobile() {
               <a href="/#about" onClick={toggleMenu}>{language === 'ru' ? 'О нас' : 'About us'}</a>
             </li>
             <li>
-              <a href="/portfolio">{language === 'ru' ? 'Портфолио' : 'Portfolio'}</a>
+              <a href="/portfolio" onClick={toggleMenu}>{language === 'ru' ? 'Портфолио' : 'Portfolio'}</a>
             </li>
             <li>
               <a href="/#services" onClick={toggleMenu}>{language === 'ru' ? 'Услуги' : 'Services'}</a>
@@ -62,27 +62,20 @@ function HeaderMobile() {
               <div className={language === 'ru' ? 'active' : ''}>{language === 'ru' ? 'EN' : 'RU'}</div>
             </div>
           </div>
-          {/* <div className="additional-content-mobile">
-            <a href="/social-responsibility">{language === 'ru' ? 'Социальная ответственность' : 'Social Responsibility'}</a>
-            <a href="/guarantees">{language === 'ru' ? 'Гарантии' : 'Guarantees'}</a>
-            <a href="/FAQ">FAQ</a>
-            <a href="/cooperation">{language === 'ru' ? 'Сотрудничество' : 'Cooperation'}</a>
-          </div> */}
         </div>
       )}
 
       <div className={isHomePage ? 'header-mobile' : (isSticky ? 'sticky-header-mobile' : 'header-not-main-mobile')}>
         <a href="/">
           <div className="main-logo-mobile">
-          
             <img src={isHomePage ? (menuOpen ? '/img/logo.svg' : '/img/logo-white.png') : "/img/logo.svg"} alt="logo-on-main-page-mobile" className='main-logo-mobile'/>
           </div>
         </a>
         <div className={isSticky ? "sticky-menu-controls-mobile" : "menu-controls-mobile"}>
-        <button 
-          className={buttonClicked ? "menu-button-mobile-clicked" : (isHomePage ? 'menu-button-mobile' : 'menu-button-mobile-not')} 
-          onClick={toggleMenu}
-        >
+          <button 
+            className={buttonClicked ? "menu-button-mobile-clicked" : (isHomePage ? 'menu-button-mobile' : 'menu-button-mobile-not')} 
+            onClick={toggleMenu}
+          >
             {buttonClicked ? (
               <img 
                 src="/img/x-mark-black.png"

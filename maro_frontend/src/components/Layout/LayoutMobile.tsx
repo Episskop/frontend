@@ -1,18 +1,21 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
-import HeaderMobile from "../Header/HeaderMobile.tsx";
-import FooterMobile from "../Footer/FooterMobile.tsx";
+import HeaderMobile from "../Header/HeaderMobile";
+import FooterMobile from "../Footer/FooterMobile";
 
-const LayoutMobile: React.FC = () => {
-    return (
-        <div className="site-wrapper">
-            <HeaderMobile />
-            <main>
-                <Outlet />
-            </main>
-            <FooterMobile />
-        </div>
-    );
+interface LayoutMobileProps {
+  children: React.ReactNode;
+}
+
+const LayoutMobile: React.FC<LayoutMobileProps> = ({ children }) => {
+  return (
+    <div className="site-wrapper">
+      <HeaderMobile />
+      <main>
+        {children}
+      </main>
+      <FooterMobile />
+    </div>
+  );
 };
 
 export default LayoutMobile;

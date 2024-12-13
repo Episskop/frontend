@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState, ReactNode } from "react";
-import { Apartment } from "../pages/Portfolio/Apartment/Apartment";
-import { Villa } from "../pages/Portfolio/Villa/Villa";
-import createPropertyData from "./Api.ts";
+import { Apartment } from "@/components/Portfolio/Apartment/Apartment";
+import { Villa } from "@/components/Portfolio/Villa/Villa";
+import createPropertyData from "@/API/Api";
 
 interface PropertyContextProps {
   apartmentData: Apartment[];
@@ -18,10 +18,10 @@ export const usePropertyData = () => {
   return context;
 };
 
-export const PropertyProvider: React.FC<{ children }> = ({ children }) => {
+export const PropertyProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [apartmentData, setApartmentData] = useState<Apartment[]>([]);
   const [villaData, setVillaData] = useState<Villa[]>([]);
-  
+
   useEffect(() => {
     const fetchData = async () => {
       try {

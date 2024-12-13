@@ -1,19 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { useLanguage } from '../../components/Language.tsx'
-import commercialData from '../Portfolio/Commercial/Commercial.tsx'
-import Supplier from '../Suppliers.tsx'
-import HousingDetails from '../HousingDetails.tsx'
-import DropDownMenu from '../DropDownMenu/DropDownMenu.tsx'
-import PopupQuiz from './popUpQuiz.tsx'
+import { useLanguage } from '@/components/Language'
+import commercialData from '@/components/Portfolio/Commercial/Commercial'
+import Supplier from '../Suppliers'
+import HousingDetails from '../HousingDetails'
+import DropDownMenu from '@/components/DropDownMenu/DropDownMenu'
+import PopupQuiz from './popUpQuiz'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import './Main.css'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import HorizontalSection from '../../components/Horizontal_section/HorizontalSection.tsx'
+import HorizontalSection from '@/components/Horizontal_section/HorizontalSection'
 import { useInView } from 'react-intersection-observer'
-import { sendMessage } from '../../telegram.ts'
-import createPropertyData from '../../API/Api.ts'
+import { sendMessage } from '@/telegram'
+import createPropertyData from '@/API/Api'
 
 function Main() {
   const currentDate = new Date();

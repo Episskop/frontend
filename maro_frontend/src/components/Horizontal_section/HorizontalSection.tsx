@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import "react-horizontal-scrolling-menu/dist/styles.css";
 import "./HorizontalSection.css";
-import {useInView} from "react-intersection-observer";
-import {useLanguage} from "../Language.tsx";
-import {Link} from "react-router-dom";
+import { useInView } from "react-intersection-observer";
+import { useLanguage } from "../Language";
+import Link from "next/link";
 
-import { useFetchData } from "../../hooks/useFetchData.ts";
+import { useFetchData } from "@/hooks/useFetchData";
 
 function transform(section: HTMLDivElement) {
     const rect = section.getBoundingClientRect();
@@ -21,6 +21,7 @@ function transform(section: HTMLDivElement) {
         percentage < 0 ? 0 : percentage > 500 ? 500 : percentage;
     scrollSection.style.transform = `translate3d(${-percentage}vw, 0, 0)`;
 }
+
 function HorizontalSection() {
     useEffect(() => {
         function handleScroll() {
@@ -37,7 +38,8 @@ function HorizontalSection() {
             window.removeEventListener("scroll", handleScroll);
         };
     }, []);
-    const {language} = useLanguage();
+
+    const { language } = useLanguage();
     const [ref, inView] = useInView({
         threshold: 0.5
     });
@@ -57,6 +59,7 @@ function HorizontalSection() {
         threshold: 0
     });
     const { apartmentData, villaData, loading, error } = useFetchData();
+
     return (
         <>
             <div id='yourSectionId' className='sticky-parent'>
@@ -94,8 +97,6 @@ function HorizontalSection() {
                                 zIndex: -1,
                                 transition: "opacity 0.5s ease",
                                 opacity: inView4 ? 0.6 : 1,
-                                // opacity: 1,
-                                // color: 'red',
                                 fontFamily: "Ubuntu , sans-serif",
                                 fontWeight: 400
                             }}
@@ -133,11 +134,7 @@ function HorizontalSection() {
                             }}
                         ></span>
                         <Link
-                            to={"/portfolio/apartments/Air"}
-                            // state={{
-                            //     type: "apartment",
-                            //     ...apartmentData[0]
-                            // }}
+                            href="/portfolio/apartments/Air"
                         >
                             <div
                                 ref={ref1}
@@ -161,11 +158,7 @@ function HorizontalSection() {
                             </div>
                         </Link>
                         <Link
-                            to={"/portfolio/apartments/Comfort_space"}
-                            // state={{
-                            //     type: "apartment",
-                            //     ...apartmentData[1]
-                            // }}
+                            href="/portfolio/apartments/Comfort_space"
                         >
                             <div
                                 style={{
@@ -179,7 +172,7 @@ function HorizontalSection() {
                             >
                                 <div
                                     className='text-overlay'
-                                    style={{left: "20%"}}
+                                    style={{ left: "20%" }}
                                 >
                                     <p>
                                         {language === "ru"
@@ -190,23 +183,8 @@ function HorizontalSection() {
                                 </div>
                             </div>
                         </Link>
-                        {/* <p
-              ref={ref4}
-              style={{
-                marginBottom: '9vw',
-                opacity: inView2 ? 0 : 1,
-                // opacity: 1,
-                fontFamily: 'Ubuntu , sans-serif',
-                fontWeight: 400,
-                fontSize: '14vw',
-                marginRight: '33.3vw',
-              }}
-            >
-              {language === 'ru' ? 'ВИЛЛЫ' : 'VILLAS'}
-            </p> */}
                         <Link
-                            to={"/portfolio/villas/Tuscany"}
-                           
+                            href="/portfolio/villas/Tuscany"
                         >
                             <div
                                 ref={ref2}
@@ -231,7 +209,7 @@ function HorizontalSection() {
                         </Link>
                         <span ref={ref4}></span>
                         <Link
-                            to={"/portfolio/villas/Colorfull"}
+                            href="/portfolio/villas/Colorfull"
                         >
                             <div
                                 style={{
@@ -241,7 +219,6 @@ function HorizontalSection() {
                                     backgroundImage: `url('img/Project_5/presentation.jpg')`,
                                     backgroundSize: "cover",
                                     marginRight: "38.2vw"
-                                    // marginRight: '10.5vw',
                                 }}
                             >
                                 <div className='text-overlay'>
@@ -266,7 +243,6 @@ function HorizontalSection() {
                                         ? "40px"
                                         : "700px",
                                 marginLeft: "38.2vw",
-                                // opacity: inView3 ? 0 : 1,
                                 opacity: 0
                             }}
                         >

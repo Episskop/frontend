@@ -1,5 +1,5 @@
 import React from 'react'
-import { useLanguage } from '../Language.tsx'
+import { useLanguage } from '../Language'
 import './Footer.css'
 
 function Footer() {

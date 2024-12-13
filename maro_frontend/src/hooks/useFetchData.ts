@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import createPropertyData from '../API/Api.ts';
+import createPropertyData from '../API/Api';
 
 
 export function useFetchData() {
